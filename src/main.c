@@ -15,10 +15,12 @@
 void	printf_arg(t_ad ad)
 {
 	int	i;
+	int j;
 
+	j = 1;
 	while (ad.pa)
 	{
-		ft_printf("cmd[%s]\n", ad.pa->cmd);
+		ft_printf("cmd%d[%s]\n", j++, ad.pa->cmd);
 		i = -1;
 		while (ad.pa->args[++i])
 			ft_printf("arg%d[%s]\n", i, ad.pa->args[i]);
@@ -30,6 +32,7 @@ void	printf_arg(t_ad ad)
 		}
 		redir_lst_fst_or_lst(&ad.pa->redir, 0);
 		ad.pa = ad.pa->next;
+		ft_printf("\n");
 	}
 	ad.pa = ad.pa_head;
 }
@@ -50,6 +53,7 @@ int	main(int ac, char **av, char **env)
 			break ;
 		if (tmp == 2 || tmp == 3)
 			continue ;
+		printf_arg(ad);
 		if (ms_exec(&ad))
 			break ;
 		free_pa(&ad);
