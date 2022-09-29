@@ -67,9 +67,9 @@ static int	skip_between_char(const char *s, int i, char c)
 		i++;
 		while (s[i])
 		{
-			i++;
 			if (s[i] == c)
 				return (i);
+			i++;
 		}
 		write(2, EVEN_MSG, ft_strlen(EVEN_MSG));
 		return (-1);
